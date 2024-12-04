@@ -48,11 +48,65 @@ TEST(Arithmetic, can_parse_correctly)
 
 TEST(Arithmetic, can_parse_and_calculate_correctly)
 {
-	string str = "10*(25/3030)-(2+40)";
+	string str = "10*(25/5)-(1025+40)";
 
 	Arithmetic ar(str);
 	double res = ar.pubCalculate();
 
 
-	EXPECT_EQ(-1170, res);
+	EXPECT_EQ(-1015, res);
+}
+
+TEST(Arithmetic, can_parse_and_calculate_correctly1)
+{
+	string str = "5/2*(12-6+4)+(24/4)";
+	Arithmetic ar(str);
+	double res = ar.pubCalculate();
+
+
+	EXPECT_EQ(31, res);
+}
+
+TEST(Arithmetic, can_parse_and_calculate_correctly2)
+{
+	string str = "123456789-987654321";
+	double val = 123456789 - 987654321;
+	Arithmetic ar(str);
+	double res = ar.pubCalculate();
+
+
+	EXPECT_EQ(val, res);
+}
+
+TEST(Arithmetic, can_parse_and_calculate_correctly3)
+{
+	string str = "0.5*12+44/11";
+
+	Arithmetic ar(str);
+	double res = ar.pubCalculate();
+
+
+	EXPECT_EQ(10, res);
+}
+
+TEST(Arithmetic, can_parse_and_calculate_correctly4)
+{
+	string str = "(12.223-0.223)+(289.1*10)";
+
+	Arithmetic ar(str);
+	double res = ar.pubCalculate();
+
+
+	EXPECT_EQ(2903, res);
+}
+
+TEST(Arithmetic, can_parse_and_calculate_correctly5)
+{
+	string str = "(5-5-5-5+5+5+5)*(5-5-5-5)";
+
+	Arithmetic ar(str);
+	double res = ar.pubCalculate();
+
+
+	EXPECT_EQ(-50, res);
 }

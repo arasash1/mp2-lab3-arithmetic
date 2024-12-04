@@ -8,9 +8,11 @@ using namespace std;
 
 int main()
 {
-	string str = "10*(25/3030)-(a+b)";
+	string str = "10*(a+b)*(a+b)-(40/12)";
 
 	Arithmetic arithmetic(str);
+
+	//std::cout << "done" << str << std::endl;
 	//cout << arithmetic.pubCalculate();
 	arithmetic.Calculate_and_Postfix();
 

@@ -25,19 +25,22 @@ bool Arithmetic::Checker() // запрещено: (++, --, **, //), (начинать с +, - , *,
 
 	for (int i = 0; i < input.size(); i++)
 	{
-		if ((input[i].type == 1) && (input[i+1].type == 1))
+		if ((i + 1) < input.size())
 		{
-			throw "str cant have more than two operators in a row";
-		}
+			if ((input[i].type == 1) && (input[i + 1].type == 1))
+			{
+				throw "str cant have more than two operators in a row";
+			}
 
-		if ((input[i].type == 2) && (input[i + 1].type == 2))
-		{
-			throw "str cant have more than two digits in a row";
-		}
-		
-		if ((input[i].type == 3) && (input[i + 1].type == 3))
-		{
-			throw "str cant have more than two alpha in a row";
+			if ((input[i].type == 2) && (input[i + 1].type == 2))
+			{
+				throw "str cant have more than two digits in a row";
+			}
+
+			if ((input[i].type == 3) && (input[i + 1].type == 3))
+			{
+				throw "str cant have more than two alpha in a row";
+			}
 		}
 
 		if (input[i].str == "(")
@@ -261,7 +264,7 @@ double Arithmetic::Calculate()
 
 			if (postfix[i].str == "-")
 			{
-				val = (right - left);
+				val = (left - right);
 				stack.Push(val);
 			}
 			if (postfix[i].str == "*")
@@ -271,7 +274,7 @@ double Arithmetic::Calculate()
 			}
 			if (postfix[i].str == "/")
 			{
-				val = (right / left);
+				val = (left/right);
 				stack.Push(val);
 			}
 
